@@ -1,57 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Titanic Data Visualization</title>
+  <meta name="author" content="Maria Schreiber" />
+  <meta name="description" content="Visualization of Titanic Passenger Data" />
   <meta charset="utf-8">
-  <style>
-	circle.dimple-series-1{
-	fill:red;
-	}
-  </style>
+  <link rel="stylesheet" href="style.css" type="text/css" />
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
-    <script type="text/javascript">
-      function draw(data) {
-      
-      /*
-        D3.js setup code
-      */
+  <script src="javascript.js"></script>
+ 
+    </head>
 
-          "use strict";
-          var margin = 75,
-              width = 1400 - margin,
-              height = 600 - margin;
-		debugger;
-		d3.select("body")
-		  .append('h2').text("World cup attendance").style("background-color", "red").style("text-align","center");
-		  
-          var svg = d3.select("body")		  
-            .append("svg")
-              .attr("width", width + margin)
-              .attr("height", height + margin)
-            .append('g')
-                .attr('class','chart');
+    <body>
+      <header>
+        <div>
+          <h1>Visualizing data with dimple.js</h1>
+        </div> 
+      </header>
 
-      /*
-        Dimple.js Chart construction code
-      */
 
-          var myChart = new dimple.chart(svg, data);
-          var x = myChart.addTimeAxis("x", "gender"); 
-          myChart.addMeasureAxis("y", '#');
-		  x.dateParseFormat = "%Y";
-		  x.tickFormat = "%Y";		  
-          myChart.addSeries(null, dimple.plot.bar);		  
-          myChart.draw();
-        };
-      </script>
-  </head>
-<body>
-  <script type="text/javascript">
-  /*
-    Use D3 (not dimple.js) to load the TSV file
-    and pass the contents of it to the draw function
-    */
-  d3.csv("titanic_data.csv", draw);
-  </script>
-</body>
-</html>
+      <div>
+        <div id = "intro_text" class = "description">
+          <h2>Introduction</h2>
+          <p>In this project, I am analyzing and visualizing the demographics and passenger information from 891 of the 2224 passengers and crew on board the Titanic. </p>
+        </div>
+
+        <div id="distribution">
+          <script type="text/javascript">
+          d3.csv("titanic-data-converted.csv", draw_distributions);
+          </script>
+        </div>
+        <div class = "description">
+          <p> As the graphs depicts that there were male passengers than female passengers on the board</p>
+        </div>
+      </div>
+
+    </body>
+    <footer>
+        <div>
+          <h2>Udacity Data Analyst Nanodegree </h2>
+        </div> 
+    </footer>
+    </html>
+
