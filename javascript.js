@@ -1,4 +1,4 @@
-    function generate_distribution_chart(data, contanier_name, x_axis, x_title, y_axis, y_title, title, x_order_rules, groupby, show_legend ){
+    function generate_distribution_chart(data, contanier_name, x_axis, x_title, y_axis, y_title, title, x_order_rules, groupby, show_legend,use_pct ){
       var margin = 40
       scaler = 0.5
       width = 800 * scaler,
@@ -12,12 +12,15 @@
                     .attr('class','chart') 
 
       var myChart = new dimple.chart(svg, data);
-      var x = myChart.addCategoryAxis("x",[x_axis]); 
-      var y = myChart.addMeasureAxis('y', y_axis);
+      var x = myChart.addCategoryAxis("x",[x_axis]);
+      if(use_pct === true)
+        var y = myChart.addPctAxis("y",y_axis);
+      else
+        var y = myChart.addMeasureAxis('y', y_axis);
       
-      x.title = title;
+      x.title = x_title;
       x.addOrderRule(x_order_rules);
-      y.title = title;
+      y.title = y_title;
       y.showGridlines = false;
       var mySeries = myChart.addSeries(groupby, dimple.plot.bar);
       mySeries.aggregate = dimple.aggregateMethod.count;
@@ -42,5 +45,9 @@
       generate_distribution_chart(data,"#grouped_distribution","socioeconomic", "socio-economic Status", "PassengerId", "Number of Passengers", "Socio-economic Distribution", ['Lower', "Middle", "Upper"], "SurvivedFactor", true);
       generate_distribution_chart(data,"#grouped_distribution","AgeCategory", "Age Category", "PassengerId", "Number of Passengers", "Age Distribution", ['Children', "Youth", "Adults", "Seniors", "UnKnown"], "SurvivedFactor", true);
       generate_distribution_chart(data,"#grouped_distribution","WithFamily", "Traveling With Family Status", "PassengerId", "Number of Passengers", "Traveling With Family Status Distribution", ['With Family', 'Alone'], "SurvivedFactor", true);
-    };
 
+      generate_distribution_chart(data,"#pct_distribution","Sex", "Gender", "PassengerId", "Number of Passengers", "Gender Distribution", ['male', "female"], "SurvivedFactor", true, true);
+      generate_distribution_chart(data,"#pct_distribution","socioeconomic", "socio-economic Status", "PassengerId", "Number of Passengers", "Socio-economic Distribution", ['Lower', "Middle", "Upper"], "SurvivedFactor", true, true);
+      generate_distribution_chart(data,"#pct_distribution","AgeCategory", "Age Category", "PassengerId", "Number of Passengers", "Age Distribution", ['Children', "Youth", "Adults", "Seniors", "UnKnown"], "SurvivedFactor", true, true);
+      generate_distribution_chart(data,"#pct_distribution","WithFamily", "Traveling With Family Status", "PassengerId", "Number of Passengers", "Traveling With Family Status Distribution", ['With Family', 'Alone'], "SurvivedFactor", true, true);
+    };

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Titanic Data Visualization</title>
+  <title>Data Visualization</title>
   <meta name="author" content="Maria Schreiber" />
   <meta name="description" content="Visualization of Titanic Passenger Data" />
   <meta charset="utf-8">
@@ -14,45 +14,59 @@
 
     <body>
       <header>
+         <script type="text/javascript">
+          d3.csv("titanic-data-converted.csv", draw_distributions);
+          </script>
         <div>
           <h1>Visualizing data with dimple.js</h1>
         </div> 
       </header>
-
-
       <div>
-        <div class = "description">
-          <h2>Introduction</h2>
-          <p>In this project, I am analyzing and visualizing the demographics and passenger information from 891 of the 2224 passengers and crew on board the Titanic. </p>
-        </div>
-
+        <div class = "text">
+          <h2>Selected Variables Distribution</h2>
+          <p>In this project I'm analyzing and visualizing the demographics and passenger information from 891 of the 2224 passengers and crew on board the Titanic. I will try to answer the following questions:
+          <li>Did people's socioeconomic status help them to get into lifeboat?</li>
+          <li>How did being with family affect their chance for survival? waht about their gender and age?</li>          
+          </p>
+        </div>        
         <div id="distribution">
-          <script type="text/javascript">
-          d3.csv("titanic-data-converted.csv", draw_distributions);
-          </script>
         </div>
-        <div class = "description">
-          <p> As the charts depicts that there were male passengers than female passengers on the board</p>
+        <div class = "text">
+          <p> The above depicted charts are the distribution of the follwoing variables in the dataset: Gender, Socio-economic, Age, Traveling Alone.</p>
         </div>
       </div>
-
-
-
       <div>
-        <div class = "description">
-          <h2>Grouped distribtion</h2>
+        <div class = "text">
+          <h2>Selected Variables Distribution Grouped by Survival Status</h2>
           <p> </p>
         </div>
-
-        <div id="grouped_distribution" class = "svg_Container">
+        <div id="grouped_distribution">
          
         </div>
-        <div class = "description">
-          <p> The charts shows the distribution of died and survived passengers in diffenet categories</p>
+        <div class = "text">
+          <p> The charts represent the distribution of died and survived passengers for each selected variable</p>
         </div>
 
       </div>
 
+      <div>
+        <div class = "text">
+          <h2>Selected Variables Distribution Grouped by Survival Status In Percentage</h2>
+          <p> The charts represent the same distribution as the previous step except that it is in percentage</p>
+        </div>
+        <div id="pct_distribution">          
+        </div>
+      </div>
+
+       <div>
+        <div class = "text">
+          <h2>Summary</h2>
+          <p> </p>
+        </div>      
+        <div class = "text">
+          <p> We may say that people with higher socioeconomic status had a better chance for survival since 37 percent of upper class passenger could not survive while 76 percent of lower class passengers died. In addition, we have showed in our sample that being with family affected passengers survival chance since 70% of passengers who were traveling alone could not survive while the same factor for people who were traveling with their family is around 51 percent. Also, the study shows that women and children had better chance of survival in the accident.</p>
+        </div>
+      </div>
     </body>
     <footer>
         <div>
