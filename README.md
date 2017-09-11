@@ -33,8 +33,14 @@ Feedbacks are collected through in person interview and the suggestion for impro
 	* Add design section to explain the reasoning behind the visualization decisions like why bar chart and why stacked bar chart?
 
 * Feedback 2
+	* Legends must be aligned properly 
+	* Use formal language in the report  
+	
 
 * Feedback 3
+	* Change the word died to perished
+	* Invert the colors of survived and died 	
+
 
 ## Resources 
 * Titanic information: https://en.wikipedia.org/wiki/RMS_Titanic

@@ -13,9 +13,9 @@
      */ 
     function generate_distribution_chart(data, contanier_name, x_axis, x_title, y_axis, y_title, title, x_order_rules, groupby, show_legend,use_pct ){
       var margin = 40
-      scaler = 0.5
-      width = 800 * scaler,
-      height = 600 * scaler;  
+      scaler = 0.6
+      width = 1024 * scaler,
+      height = 768 * scaler;  
 
        var svg = d3.select(contanier_name)
                     .append("svg")
@@ -36,9 +36,11 @@
       y.title = y_title;
       y.showGridlines = false;
       var mySeries = myChart.addSeries(groupby, dimple.plot.bar);
+      myChart.assignColor("Survived", "#80B1D3");
+      myChart.assignColor("Perished", "#d26b5f");
       mySeries.aggregate = dimple.aggregateMethod.count;
       if(show_legend === true)
-        myChart.addLegend(60, 60, 350, 20, "right");
+        myChart.addLegend(100, 35, 550, 20, "right");
       myChart.draw();
       svg.append("text").attr("x", myChart._xPixels() + myChart._widthPixels() / 2).attr("y", myChart._yPixels() - 20)
       .style("text-anchor", "middle").style("font-family", "sans-serif")
